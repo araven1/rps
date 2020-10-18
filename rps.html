@@ -5,13 +5,80 @@
 </head>
 <body>
   <script type="text/javascript">
-    // Demo of RPS console game.
- const rps = ['Rock','Paper','Scissors']
- 
-    function computerPlay (array) {
-     return array [Math.floor(Math.random() * array.length)];
-    }
+
+    const rps = ['Rock','Paper','Scissors'];
+    let playerSelection = prompt("Type either Rock, Paper or Scissors.").toLowerCase();
+    let round = 5
     
+
+    function computerPlay() {
+      switch (Math.floor(Math.random() * 3)) {
+        case 0: return "rock";
+        break;
+        case 1: return "paper";
+        break
+        case 2: return "scissors";
+        break;
+      }
+    }
+
+
+      
+    function rpsRound (playerSelection, computerSelection) {
+
+      console.log("Player: " + playerSelection);
+      console.log("Computer: " + computerSelection); 
+
+      switch (playerSelection) {
+        
+        case "rock":
+        switch (computerSelection) {
+                case "rock": console.log("Draw!");
+                break;
+                case "paper": console.log("You lose!");
+                break;
+                case "scissors": console.log("You win!");
+                break;
+          }
+          break;
+        case "paper":
+        switch (computerSelection) {
+                case "rock": console.log("You win!");
+                break;
+                case "paper": console.log("Draw!");
+                break;
+                case "scissors": console.log("You lose!");
+                break;
+          }
+          break;
+        case "scissors":
+        switch (computerSelection) {
+                case "rock": console.log("You lose!");
+                break;
+                case "paper": console.log("You win!");
+                break;
+                case "scissors": console.log("Draw!");
+                break;
+        }
+        break;
+      }
+    }
+  
+    function game() {
+    
+      while (round > 0){ 
+        
+        console.log("Round " + round)
+        computerPlay();
+        computerSelection = computerPlay();
+        playerSelection = prompt("Type either Rock, Paper or Scissors.").toLowerCase();
+        rpsRound(playerSelection, computerSelection);
+        round = round - 1;
+        
+      }
+     
+    }
+
 
 
 
